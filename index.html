@@ -10,14 +10,24 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       background: #f4f4f4;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 2em;
+      text-align: center;
     }
     .wheel-container {
       position: relative;
       width: 300px;
       height: 300px;
+      margin-bottom: 20px;
     }
     #wheel {
       width: 100%;
@@ -28,37 +38,56 @@
       transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
     }
     #pointer {
-      width: 0; 
-      height: 0; 
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-bottom: 40px solid red;
       position: absolute;
-      top: -40px;   /* just above the circle */
+      top: -50px;
       left: 50%;
       transform: translateX(-50%);
     }
     #spinBtn {
-      margin-top: 20px;
+      margin-bottom: 15px;
       padding: 10px 20px;
       font-size: 18px;
       cursor: pointer;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 5px;
     }
     #result {
-      margin-top: 15px;
+      margin-bottom: 20px;
       font-size: 20px;
       font-weight: bold;
       color: #333;
+      text-align: center;
+    }
+    footer {
+      margin-top: auto;
+      padding-top: 20px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+    footer a {
+      color: #1da1f2;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <h1>Spin the Wheel</h1>
   <div class="wheel-container">
-    <div id="pointer"></div>
+    <svg id="pointer" width="40" height="50" viewBox="0 0 40 50">
+      <polygon points="20,0 0,40 40,40" fill="red" stroke="#fff" stroke-width="2"/>
+    </svg>
     <div id="wheel"></div>
   </div>
   <button id="spinBtn">SPIN</button>
   <div id="result"></div>
+  <footer>Made by <a href="https://x.com/blitz_afc" target="_blank" rel="noopener">@blitz_afc</a></footer>
 
   <script>
     const wheel = document.getElementById("wheel");
