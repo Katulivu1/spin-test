@@ -86,12 +86,14 @@
   </div>
   <button id="spinBtn">SPIN</button>
   <div id="result"></div>
+  <audio id="spinSound" src="https://orangefreesounds.com/wp-content/uploads/2025/01/Spinning-prize-wheel-sound-effect.mp3" preload="auto"></audio>
   <footer>Made by <a href="https://x.com/blitz_afc" target="_blank" rel="noopener">@blitz_afc</a></footer>
 
   <script>
     const wheel = document.getElementById("wheel");
     const spinBtn = document.getElementById("spinBtn");
     const result = document.getElementById("result");
+    const spinSound = document.getElementById("spinSound");
 
     // Prizes in order (starting from top, clockwise)
     const prizes = ["500k €", "1 Mio €", "10 Mio €", "100 Mio €", "1 Bil €", "10 Bil €", "Death"];
@@ -99,6 +101,9 @@
     let deg = 0;
 
     spinBtn.addEventListener("click", () => {
+      spinSound.currentTime = 0;
+      spinSound.play();
+
       const spinDegrees = Math.floor(2000 + Math.random() * 2000);
       deg += spinDegrees;
 
