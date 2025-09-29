@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin the Wheel</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    #wheel {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 8px solid #333;
+      background: url("1000154979.jpg") no-repeat center/cover; /* Use your image here */
+      transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    #pointer {
+      width: 0; 
+      height: 0; 
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid red;
+      position: absolute;
+      top: 20px;
+    }
+    #spinBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="pointer"></div>
+  <div id="wheel"></div>
+  <button id="spinBtn">SPIN</button>
+
+  <script>
+    const wheel = document.getElementById("wheel");
+    const spinBtn = document.getElementById("spinBtn");
+    let deg = 0;
+
+    spinBtn.addEventListener("click", () => {
+      const extra = Math.floor(2000 + Math.random() * 2000); // random spin
+      deg += extra;
+      wheel.style.transform = `rotate(${deg}deg)`;
+    });
+  </script>
+</body>
+</html>
