@@ -18,7 +18,7 @@
       box-sizing: border-box;
     }
     h1 {
-      margin: 10px 0 30px 0; /* spacing below title */
+      margin: 10px 0 30px 0;
       color: #333;
       font-size: 2em;
       text-align: center;
@@ -35,7 +35,6 @@
       border-radius: 50%;
       background: url("1000154979.jpg") no-repeat center/cover;
       transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-      /* border removed */
     }
     #pointer {
       position: absolute;
@@ -95,15 +94,15 @@
     const result = document.getElementById("result");
     const spinSound = document.getElementById("spinSound");
 
-    // Prize slices (approximate degrees, with Death larger)
-    const ranges = [
-      { name: "500k €", end: 45 },
-      { name: "1 Mio €", end: 90 },
-      { name: "10 Mio €", end: 135 },
-      { name: "100 Mio €", end: 180 },
-      { name: "1 Bil €", end: 225 },
-      { name: "10 Bil €", end: 270 },
-      { name: "Death", end: 360 } // larger slice ~90°
+    // 7 equal slices = ~51.43 degrees each
+    const slices = [
+      "500k €",
+      "1 Mio €",
+      "10 Mio €",
+      "100 Mio €",
+      "1 Bil €",
+      "10 Bil €",
+      "Death"
     ];
 
     let deg = 0;
@@ -122,14 +121,12 @@
         let angle = 360 - actualDeg;
         if (angle < 0) angle += 360;
 
-        let prize = "";
-        for (let r of ranges) {
-          if (angle <= r.end) {
-            prize = r.name;
-            break;
-          }
-        }
+        // Find slice index
+        let sliceSize = 360 / slices.length;
+        let index = Math.floor(angle / sliceSize);
+        if (index >= slices.length) index = slices.length - 1;
 
+        let prize = slices[index];
         result.textContent = "Result: " + prize;
       }, 4000);
     });
