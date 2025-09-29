@@ -24,7 +24,7 @@
       height: 100%;
       border-radius: 50%;
       border: 8px solid #333;
-      background: url("1000154979.jpg") no-repeat center/cover; /* Use your image */
+      background: url("1000154979.jpg") no-repeat center/cover, radial-gradient(circle, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
       transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
     }
     #pointer {
@@ -84,8 +84,8 @@
         // Each slice is about 360 / 7 = ~51.4 degrees
         const sliceDeg = 360 / prizes.length;
 
-        // Determine index
-        const index = Math.floor((360 - actualDeg) / sliceDeg) % prizes.length;
+        // Determine index (corrected for clockwise rotation)
+        const index = Math.floor(actualDeg / sliceDeg) % prizes.length;
 
         result.textContent = "Result: " + prizes[index];
       }, 4000);
