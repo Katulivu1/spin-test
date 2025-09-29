@@ -18,7 +18,7 @@
       box-sizing: border-box;
     }
     h1 {
-      margin: 10px 0 40px 0; /* more spacing below title */
+      margin: 10px 0 30px 0; /* spacing below title */
       color: #333;
       font-size: 2em;
       text-align: center;
@@ -35,11 +35,11 @@
       border-radius: 50%;
       background: url("1000154979.jpg") no-repeat center/cover;
       transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-      border: 8px solid #333;
+      /* border removed */
     }
     #pointer {
       position: absolute;
-      top: -65px; /* closer to circle */
+      top: -20px; /* closer to the wheel */
       left: 50%;
       transform: translateX(-50%);
     }
@@ -70,20 +70,12 @@
       color: #666;
       font-size: 14px;
     }
-    footer a {
-      color: #1da1f2;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
   <h1>Spin the Wheel</h1>
   <div class="wheel-container">
-    <!-- Longer pointer -->
+    <!-- Pointer -->
     <svg id="pointer" width="50" height="70" viewBox="0 0 50 70">
       <polygon points="25,0 0,60 50,60" fill="red" stroke="#fff" stroke-width="2"/>
     </svg>
@@ -94,7 +86,7 @@
   <audio id="spinSound" src="https://orangefreesounds.com/wp-content/uploads/2025/01/Spinning-prize-wheel-sound-effect.mp3" preload="auto"></audio>
 
   <footer>
-    Made by <a href="https://x.com/blitz_afc" target="_blank" rel="noopener">@blitz_afc</a>
+    Made by blitz_afc
   </footer>
 
   <script>
